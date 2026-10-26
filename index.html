@@ -46,6 +46,11 @@
   .btn:hover { background:#000; } .btn:active { transform:scale(.97); }
   .btn:focus-visible { outline:2px solid var(--accent); outline-offset:3px; }
   .btn.pulse { animation: pulse 2.4s ease infinite; }
+  .guide { max-width:36rem; margin:0 auto 28px; text-align:left; border:2px solid var(--accent); border-radius:var(--radius); background:#fdeee7; padding:20px 24px; animation: glow 2.4s ease-in-out infinite; }
+  .download .guide p { margin:6px 0; font-size:16px; color:var(--text); max-width:none; }
+  .download .guide p.guide-title { font-family:Oswald, sans-serif; text-transform:uppercase; color:var(--accent); font-size:20px; margin-top:0; }
+  .btn.ready { background:var(--accent); }
+  @keyframes glow { 50% { box-shadow:0 0 0 6px rgb(232 85 31 / .18); } }
   .note { font-size:12px; color:var(--muted); text-align:center; max-width:40rem; margin:0 auto; padding:32px 24px 48px; }
   footer { border-top:1px solid #eee; font-size:12px; color:var(--muted); padding:24px 0; }
 
@@ -96,8 +101,13 @@
     <section class="download" aria-labelledby="dl-title">
       <div class="wrap">
         <h2 id="dl-title">Ready to Download?</h2>
-        <p>Click download, wait a few seconds on the sponsor screen, and your link will appear.</p>
-        <button class="btn pulse" id="open-ad" type="button">Download mod</button>
+        <p>Free download for GTA San Andreas PC.</p>
+        <div class="guide" role="note">
+          <p class="guide-title">How to download</p>
+          <p>1. Click Download. A new website will open. Just close it.</p>
+          <p>2. Come back here and click Download again to get your file.</p>
+        </div>
+        <a class="btn pulse" id="dl-btn" href="https://drive.google.com/file/d/1K5YKxup7labq85YBGlyvkimOlOr6UkRX/view?usp=sharing" target="_blank" rel="noopener">Download mod</a>
       </div>
     </section>
 
@@ -106,35 +116,10 @@
 
   <footer><div class="wrap">© <span id="yr"></span> SA Mod</div></footer>
 
-  <dialog id="ad-screen" aria-labelledby="ad-label">
-    <div class="dlg">
-      <div class="dlg-top">
-        <p class="eyebrow" id="ad-label">Sponsored</p>
-        <button class="x" type="button" id="close-ad" aria-label="Close">&times;</button>
-      </div>
-      <div id="ad-panel">
-        <div class="ad-box" id="ad-box">
-          <!-- Optional: paste an Adsterra banner or native ad code here -->
-          Your ad will show here.
-        </div>
-        <div id="waiting" style="margin-top:20px">
-          <div class="bar"><div id="bar"></div></div>
-          <p class="wait" aria-live="polite">Please wait on this screen <span id="count">5</span>s</p>
-        </div>
-        <div class="skip-row" id="skip-row" hidden style="margin-top:20px">
-          <button class="btn" type="button" id="skip">Skip &rarr;</button>
-        </div>
-      </div>
-      <div class="ready" id="ready" hidden>
-        <h3>Your download is ready</h3>
-        <a class="btn" id="dl-link" href="https://drive.google.com/file/d/1K5YKxup7labq85YBGlyvkimOlOr6UkRX/view?usp=sharing" target="_blank" rel="noopener">Proceed to download</a>
-      </div>
-    </div>
-  </dialog>
 
   <script>
     (function () {
-      var WAIT_SECONDS = 5; // change the ad wait time here
+      
       document.getElementById('yr').textContent = new Date().getFullYear();
 
       // 3D tilt follows the mouse
@@ -149,34 +134,16 @@
         }, { passive: true });
       }
 
-      // Ad screen: wait, then Skip, then download
-      var dialog = document.getElementById('ad-screen');
-      var panel = document.getElementById('ad-panel');
-      var waiting = document.getElementById('waiting');
-      var skipRow = document.getElementById('skip-row');
-      var ready = document.getElementById('ready');
-      var bar = document.getElementById('bar');
-      var count = document.getElementById('count');
-      var frame = null;
-
-      function start() {
-        panel.hidden = false; waiting.hidden = false; skipRow.hidden = true; ready.hidden = true;
-        var t0 = performance.now(), total = WAIT_SECONDS * 1000;
-        (function tick() {
-          var p = Math.min((performance.now() - t0) / total, 1);
-          bar.style.width = (p * 100) + '%';
-          count.textContent = Math.max(0, Math.ceil((total - (performance.now() - t0)) / 1000));
-          if (p < 1) { frame = requestAnimationFrame(tick); }
-          else { waiting.hidden = true; skipRow.hidden = false; document.getElementById('skip').focus(); }
-        })();
-      }
-
-      document.getElementById('open-ad').addEventListener('click', function () { dialog.showModal(); start(); });
-      document.getElementById('close-ad').addEventListener('click', function () { dialog.close(); });
-      dialog.addEventListener('close', function () { if (frame) cancelAnimationFrame(frame); });
-      document.getElementById('skip').addEventListener('click', function () {
-        panel.hidden = true; ready.hidden = false; document.getElementById('dl-link').focus();
+      // Two-click download: first click lets the popunder open, second click opens the file
+      var dl = document.getElementById('dl-btn'), clickedOnce = false;
+      dl.addEventListener('click', function (e) {
+        if (clickedOnce) return;
+        e.preventDefault();
+        clickedOnce = true;
+        dl.textContent = 'Click again to download';
+        dl.classList.add('ready');
       });
+
     })();
   </script>
 
