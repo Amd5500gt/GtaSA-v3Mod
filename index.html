@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GTA San Andreas PC Mod – Free Download</title>
+<meta name="description" content="A fan-made mod for GTA San Andreas on PC. Free to download.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;600&family=Oswald:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root { --bg:#fff; --text:#14121a; --muted:#5d5866; --soft:#f4f2f7; --accent:#e8551f; --dark:#14121a; --radius:14px; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--text); font-family:Karla, system-ui, sans-serif; line-height:1.6; -webkit-font-smoothing:antialiased; }
+  h1, h2, h3 { font-family:Oswald, Impact, sans-serif; font-weight:700; text-transform:uppercase; margin:0; line-height:.95; }
+  .wrap { width:100%; max-width:1200px; margin:0 auto; padding:0 24px; }
+  header { padding:20px 0; } header .wrap { display:flex; justify-content:space-between; align-items:center; }
+  .nav { display:flex; gap:24px; font-size:15px; } .nav a, a.logo { color:inherit; text-decoration:none; } .nav a:hover { color:var(--accent); }
+  .logo { font-family:Oswald, sans-serif; font-size:20px; text-transform:uppercase; letter-spacing:.05em; }
+  .eyebrow { color:var(--accent); font-size:12px; letter-spacing:.3em; text-transform:uppercase; font-weight:600; margin:0 0 20px; }
+
+  .hero .wrap { display:grid; gap:48px; align-items:center; min-height:82svh; padding-top:32px; padding-bottom:64px; }
+  @media (min-width:768px) { .hero .wrap { grid-template-columns:1fr 1fr; } }
+  .hero h1 { font-size:clamp(3rem, 7vw, 6rem); }
+  .hero p.sub { color:var(--muted); font-size:18px; max-width:28rem; margin:24px 0 0; }
+  .hero-copy > * { animation: rise .9s cubic-bezier(.2,.7,.2,1) both; }
+  .hero-copy > *:nth-child(2) { animation-delay:.12s; } .hero-copy > *:nth-child(3) { animation-delay:.24s; }
+
+  .stage { position:relative; width:100%; max-width:36rem; aspect-ratio:4/3; margin:0 auto; perspective:1400px; }
+  .deck { position:absolute; inset:0; transform-style:preserve-3d;
+    transform: rotateX(calc(14deg + var(--ty,0) * -8deg)) rotateY(calc(-22deg + var(--tx,0) * 12deg));
+    transition: transform .6s cubic-bezier(.2,.7,.2,1); animation: enter 1.4s cubic-bezier(.2,.7,.2,1) both; }
+  .card { position:absolute; overflow:hidden; border-radius:var(--radius); background:var(--soft);
+    box-shadow:0 40px 80px -30px rgb(20 18 26 / .35), 0 0 0 1px rgb(20 18 26 / .06); animation: float 7s ease-in-out infinite; }
+  .card img { width:100%; height:100%; object-fit:cover; display:block; }
+  .c1 { inset:2% 34% 38% 2%; transform:translateZ(-140px); }
+  .c2 { inset:20% 18% 20% 18%; transform:translateZ(0); animation-delay:-2.3s; }
+  .c3 { inset:40% 2% 2% 36%; transform:translateZ(140px); animation-delay:-4.6s; }
+
+  .download { position:relative; overflow:hidden; background:var(--soft); text-align:center; padding:96px 0; isolation:isolate; }
+  .download::before { content:""; position:absolute; inset:0; z-index:-1; background:radial-gradient(60% 60% at 50% 100%, color-mix(in oklab, var(--accent) 35%, transparent), transparent 70%); }
+  .download h2 { font-size:clamp(2rem, 4vw, 2.6rem); }
+  .download p { color:var(--muted); font-size:18px; margin:20px auto 28px; max-width:36rem; }
+  .btn { display:inline-flex; align-items:center; justify-content:center; gap:10px; height:56px; padding:0 40px; border:0; border-radius:10px;
+    background:var(--dark); color:#fff; font:600 17px Karla, sans-serif; text-transform:uppercase; letter-spacing:.15em; cursor:pointer; text-decoration:none; transition: transform .15s, background .2s; }
+  .btn:hover { background:#000; } .btn:active { transform:scale(.97); }
+  .btn:focus-visible { outline:2px solid var(--accent); outline-offset:3px; }
+  .btn.pulse { animation: pulse 2.4s ease infinite; }
+  .note { font-size:12px; color:var(--muted); text-align:center; max-width:40rem; margin:0 auto; padding:32px 24px 48px; }
+  footer { border-top:1px solid #eee; font-size:12px; color:var(--muted); padding:24px 0; }
+
+  dialog { width:min(92vw, 40rem); border:0; padding:0; border-radius:var(--radius); background:var(--soft); color:var(--text); }
+  dialog::backdrop { background:rgb(10 8 14 / .7); }
+  dialog[open] { animation: flip .32s ease both; }
+  .dlg { padding:28px; display:flex; flex-direction:column; gap:20px; }
+  .dlg-top { display:flex; justify-content:space-between; align-items:center; }
+  .dlg-top .eyebrow { margin:0; }
+  .x { background:none; border:0; font-size:26px; line-height:1; cursor:pointer; color:var(--text); width:44px; height:44px; }
+  .ad-box { min-height:250px; background:#fff; border-radius:var(--radius); display:flex; align-items:center; justify-content:center; color:var(--muted); font-size:14px; text-align:center; padding:16px; }
+  .bar { height:8px; background:#fff; border-radius:99px; overflow:hidden; } .bar > div { height:100%; width:0; background:var(--accent); }
+  .wait { font-size:14px; color:var(--muted); margin:8px 0 0; }
+  .skip-row { display:flex; justify-content:flex-end; }
+  .ready { text-align:center; padding:24px 0; display:flex; flex-direction:column; gap:16px; align-items:center; }
+  .ready h3 { font-size:26px; } .ready .btn { width:100%; }
+  [hidden] { display:none !important; }
+
+  @keyframes float { 50% { translate:0 -14px; } }
+  @keyframes enter { from { transform: rotateX(50deg) rotateY(-50deg) translateZ(-300px); } }
+  @keyframes rise { from { opacity:0; transform:translateY(24px); } }
+  @keyframes flip { from { opacity:0; transform:perspective(900px) rotateX(12deg) translateY(24px) scale(.96); } }
+  @keyframes pulse { 0% { box-shadow:0 0 0 0 rgb(232 85 31 / .55); } 70% { box-shadow:0 0 0 18px transparent; } 100% { box-shadow:0 0 0 0 transparent; } }
+  @media (prefers-reduced-motion: reduce) { *, *::before { animation:none !important; transition:none !important; } }
+</style>
+</head>
+<body>
+  <header><div class="wrap"><a class="logo" href="/">SA Mod</a><nav class="nav"><a href="/">Home</a><a href="/videos">Videos</a></nav></div></header>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="wrap">
+        <div class="hero-copy">
+          <p class="eyebrow">GTA San Andreas · PC mod</p>
+          <h1 id="hero-title">Welcome back to Los Santos</h1>
+          <p class="sub">A fan-made mod for GTA San Andreas on PC. Free to download.</p>
+        </div>
+        <div class="stage" id="stage" aria-hidden="true">
+          <div class="deck">
+            <div class="card c1"><img src="https://cdn.shopify.com/s/files/1/0850/1195/5926/files/Screenshot_2026-10-26_070349.png?v=1792978606&width=1100" alt=""></div>
+            <div class="card c2"><img src="https://cdn.shopify.com/s/files/1/0850/1195/5926/files/Screenshot_2026-10-26_070537.png?v=1792978610&width=1100" alt=""></div>
+            <div class="card c3"><img src="https://cdn.shopify.com/s/files/1/0850/1195/5926/files/Screenshot_2026-10-26_070412.png?v=1792978603&width=1100" alt=""></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="download" aria-labelledby="dl-title">
+      <div class="wrap">
+        <h2 id="dl-title">Ready to Download?</h2>
+        <p>Click download, wait a few seconds on the sponsor screen, and your link will appear.</p>
+        <button class="btn pulse" id="open-ad" type="button">Download mod</button>
+      </div>
+    </section>
+
+    <p class="note">Fan-made mod. Not affiliated with or endorsed by Rockstar Games. You need your own legal copy of GTA San Andreas for PC.</p>
+  </main>
+
+  <footer><div class="wrap">© <span id="yr"></span> SA Mod</div></footer>
+
+  <dialog id="ad-screen" aria-labelledby="ad-label">
+    <div class="dlg">
+      <div class="dlg-top">
+        <p class="eyebrow" id="ad-label">Sponsored</p>
+        <button class="x" type="button" id="close-ad" aria-label="Close">&times;</button>
+      </div>
+      <div id="ad-panel">
+        <div class="ad-box" id="ad-box">
+          <!-- Optional: paste an Adsterra banner or native ad code here -->
+          Your ad will show here.
+        </div>
+        <div id="waiting" style="margin-top:20px">
+          <div class="bar"><div id="bar"></div></div>
+          <p class="wait" aria-live="polite">Please wait on this screen <span id="count">5</span>s</p>
+        </div>
+        <div class="skip-row" id="skip-row" hidden style="margin-top:20px">
+          <button class="btn" type="button" id="skip">Skip &rarr;</button>
+        </div>
+      </div>
+      <div class="ready" id="ready" hidden>
+        <h3>Your download is ready</h3>
+        <a class="btn" id="dl-link" href="https://drive.google.com/file/d/1K5YKxup7labq85YBGlyvkimOlOr6UkRX/view?usp=sharing" target="_blank" rel="noopener">Proceed to download</a>
+      </div>
+    </div>
+  </dialog>
+
+  <script>
+    (function () {
+      var WAIT_SECONDS = 5; // change the ad wait time here
+      document.getElementById('yr').textContent = new Date().getFullYear();
+
+      // 3D tilt follows the mouse
+      var stage = document.getElementById('stage');
+      if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        window.addEventListener('pointermove', function (e) {
+          var r = stage.getBoundingClientRect();
+          var x = Math.max(-1, Math.min(1, ((e.clientX - r.left) / r.width) * 2 - 1));
+          var y = Math.max(-1, Math.min(1, ((e.clientY - r.top) / r.height) * 2 - 1));
+          stage.style.setProperty('--tx', x.toFixed(3));
+          stage.style.setProperty('--ty', y.toFixed(3));
+        }, { passive: true });
+      }
+
+      // Ad screen: wait, then Skip, then download
+      var dialog = document.getElementById('ad-screen');
+      var panel = document.getElementById('ad-panel');
+      var waiting = document.getElementById('waiting');
+      var skipRow = document.getElementById('skip-row');
+      var ready = document.getElementById('ready');
+      var bar = document.getElementById('bar');
+      var count = document.getElementById('count');
+      var frame = null;
+
+      function start() {
+        panel.hidden = false; waiting.hidden = false; skipRow.hidden = true; ready.hidden = true;
+        var t0 = performance.now(), total = WAIT_SECONDS * 1000;
+        (function tick() {
+          var p = Math.min((performance.now() - t0) / total, 1);
+          bar.style.width = (p * 100) + '%';
+          count.textContent = Math.max(0, Math.ceil((total - (performance.now() - t0)) / 1000));
+          if (p < 1) { frame = requestAnimationFrame(tick); }
+          else { waiting.hidden = true; skipRow.hidden = false; document.getElementById('skip').focus(); }
+        })();
+      }
+
+      document.getElementById('open-ad').addEventListener('click', function () { dialog.showModal(); start(); });
+      document.getElementById('close-ad').addEventListener('click', function () { dialog.close(); });
+      dialog.addEventListener('close', function () { if (frame) cancelAnimationFrame(frame); });
+      document.getElementById('skip').addEventListener('click', function () {
+        panel.hidden = true; ready.hidden = false; document.getElementById('dl-link').focus();
+      });
+    })();
+  </script>
+
+  <!-- Adsterra Popunder -->
+  <script data-cfasync="false" src="https://abscloud.org/1/6d2ace5f40c475a1f57cabe7f3884768"></script>
+  <!-- Adsterra Social Bar -->
+  <script data-cfasync="false" src="https://bauval.org/14/b61fae5088bd47f332d0c35f7d5259c2"></script>
+</body>
+</html>
