@@ -1,0 +1,20 @@
+<svg width="1200" height="360" viewBox="0 0 1200 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">SA Mod logo</title>
+  <desc id="desc">A custom logo for SA Mod with an orange icon and typography.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#14121a"/>
+      <stop offset="100%" stop-color="#2a2631"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="360" rx="52" fill="#ffffff"/>
+  <g transform="translate(40 40)">
+    <rect width="280" height="280" rx="74" fill="url(#bg)"/>
+    <path d="M72 207V93h150c0-44 36-80 80-80 35 0 67 24 76 58l-44 8c-4-17-18-30-35-30-31 0-57 25-57 57v38h62v42H222l8 52H72zm52 0 44-67h60l-44 67H124z" fill="#e8551f"/>
+  </g>
+  <g fill="#14121a" font-family="Arial, Helvetica, sans-serif" transform="translate(380 110)">
+    <text x="0" y="86" font-size="112" font-weight="700" letter-spacing="4">SA</text>
+    <text x="0" y="188" font-size="88" font-weight="800" letter-spacing="6" fill="#e8551f">MOD</text>
+    <text x="0" y="236" font-size="30" font-weight="700" letter-spacing="14" fill="#5d5866">GTA SAN ANDREAS</text>
+  </g>
+</svg>

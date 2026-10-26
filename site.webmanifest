@@ -1,0 +1,17 @@
+{
+  "name": "SA Mod",
+  "short_name": "SA Mod",
+  "description": "GTA San Andreas PC mod download and videos website.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#14121a",
+  "theme_color": "#14121a",
+  "icons": [
+    {
+      "src": "/logo-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
